@@ -1,3 +1,3 @@
 all:
-	gcc main.cpp obj.cpp initobj.cpp outobj.cpp -lstdc++ -o main.out
+	gcc main.cpp file.cpp location.cpp -lstdc++ -o main.out
 

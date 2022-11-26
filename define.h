@@ -1,25 +1,46 @@
-#include <string>
+#include <fstream>
 
-
-struct paths
-{
-	static const char* in;
-	static const char* out;
-};
 
 class File
 {
-	private:
-		const char* in;
-		const char* out;
 	public:
-		std::string data;
-		int get(const char* in = "./in.txt");
-		int set(const char* out = "./out.txt");
+		std::ifstream in(const char* path = "./in.txt");
+		std::ofstream out(const char* path = "./out.txt");
 };
 
-struct lable
+struct msg
 {
   static const std::string err_fin;
   static const std::string err_fout;
+	static const std::string err_size;
+	static const std::string err_name;
+	static const std::string err_num;
+	static const std::string success;
 };
+
+enum field
+{
+	city,
+	street,
+	house,
+	flat
+};
+
+class Location
+{
+	private:
+		std::string city;
+		std::string street;
+		int house;
+		int flat;
+	public:
+		Location(
+				std::string city = "none", 
+				std::string street = "none",
+				int house = 0,
+				int flat = 0
+				);
+		std::string strGet(std::string splitter = ", ");
+		bool strSet(std::string val, field index);
+};
+
